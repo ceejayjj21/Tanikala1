@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine;
 public class NewBehaviourScript : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
@@ -19,9 +20,9 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            if(textComponent.text == lines[index])
+            if (textComponent.text == lines[index])
             {
                 NextLine();
             }
@@ -41,7 +42,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     IEnumerator TypeLine()
     {
-        foreach(char c  in lines[index].ToCharArray())
+        foreach (char c in lines[index].ToCharArray())
         {
             textComponent.text += c;
             yield return new WaitForSeconds(textSpeed);
@@ -50,7 +51,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     void NextLine()
     {
-        if(index < lines.Length - 1)
+        if (index < lines.Length - 1)
         {
             index++;
             textComponent.text = string.Empty;

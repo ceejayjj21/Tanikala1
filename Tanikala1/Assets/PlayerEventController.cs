@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerEventController : MonoBehaviour
 {
-   public void QuitGame()
+    public void QuitGame()
     {
         Debug.Log("Game Quitted");
         Application.Quit();
