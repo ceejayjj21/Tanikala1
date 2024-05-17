@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -26,9 +23,9 @@ public class PlayerController : MonoBehaviour
         Vector3 castPost = transform.position;
 
         castPost.y += 1;
-        if(Physics.Raycast(castPost, -transform.up, out hit,Mathf.Infinity, terrainLayer)) 
-        { 
-            if(hit.collider != null)
+        if (Physics.Raycast(castPost, -transform.up, out hit, Mathf.Infinity, terrainLayer))
+        {
+            if (hit.collider != null)
             {
                 Vector3 movePos = transform.position;
                 movePos.y = hit.point.y + groundDist;
@@ -38,21 +35,21 @@ public class PlayerController : MonoBehaviour
 
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
-        Vector3 movDir = new Vector3(x, 0,y);
+        Vector3 movDir = new Vector3(x, 0, y);
         rb.velocity = movDir * speed;
 
-        if(x != 0 && x < 0)
+        if (x != 0 && x < 0)
         {
             sr.flipX = true;
         }
-        else if(x != 0 && x > 0)
+        else if (x != 0 && x > 0)
         {
             sr.flipX = false;
         }
 
-        animator.SetFloat("Horizontal",movDir.x);
-        animator.SetFloat("Vertical",movDir.y);
-        animator.SetFloat("Speed",movDir.sqrMagnitude);
-        
+        animator.SetFloat("Horizontal", movDir.x);
+        animator.SetFloat("Vertical", movDir.y);
+        animator.SetFloat("Speed", movDir.sqrMagnitude);
+
     }
 }
