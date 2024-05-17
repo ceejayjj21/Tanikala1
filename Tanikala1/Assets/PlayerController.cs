@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     public LayerMask terrainLayer;
     public Rigidbody rb;
     public SpriteRenderer sr;
+    public Animator animator;
+
+
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
@@ -46,6 +49,10 @@ public class PlayerController : MonoBehaviour
         {
             sr.flipX = false;
         }
+
+        animator.SetFloat("Horizontal",movDir.x);
+        animator.SetFloat("Vertical",movDir.y);
+        animator.SetFloat("Speed",movDir.sqrMagnitude);
         
     }
 }
