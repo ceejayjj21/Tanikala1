@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerWalking
+  m_Name: CHR_MainHero_Walking_Right
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,16 +21,18 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -1140780724, guid: b4e05452bb432b040a727bbd51abae4d, type: 3}
+      value: {fileID: 1851344119, guid: b4e05452bb432b040a727bbd51abae4d, type: 3}
     - time: 0.1
       value: {fileID: -1140780724, guid: b4e05452bb432b040a727bbd51abae4d, type: 3}
-    - time: 0.21666667
+    - time: 0.18333334
+      value: {fileID: -332483515, guid: b4e05452bb432b040a727bbd51abae4d, type: 3}
+    - time: 0.28333333
       value: {fileID: 977025454, guid: b4e05452bb432b040a727bbd51abae4d, type: 3}
-    - time: 0.31666666
+    - time: 0.36666667
       value: {fileID: -1985338847, guid: b4e05452bb432b040a727bbd51abae4d, type: 3}
-    - time: 0.43333334
+    - time: 0.46666667
       value: {fileID: 1250262492, guid: b4e05452bb432b040a727bbd51abae4d, type: 3}
-    - time: 0.53333336
+    - time: 0.56666666
       value: {fileID: 1089017704, guid: b4e05452bb432b040a727bbd51abae4d, type: 3}
     - time: 0.65
       value: {fileID: -211825364, guid: b4e05452bb432b040a727bbd51abae4d, type: 3}
@@ -58,8 +60,9 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
+    - {fileID: 1851344119, guid: b4e05452bb432b040a727bbd51abae4d, type: 3}
     - {fileID: -1140780724, guid: b4e05452bb432b040a727bbd51abae4d, type: 3}
-    - {fileID: -1140780724, guid: b4e05452bb432b040a727bbd51abae4d, type: 3}
+    - {fileID: -332483515, guid: b4e05452bb432b040a727bbd51abae4d, type: 3}
     - {fileID: 977025454, guid: b4e05452bb432b040a727bbd51abae4d, type: 3}
     - {fileID: -1985338847, guid: b4e05452bb432b040a727bbd51abae4d, type: 3}
     - {fileID: 1250262492, guid: b4e05452bb432b040a727bbd51abae4d, type: 3}
