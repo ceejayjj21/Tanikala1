@@ -11,12 +11,15 @@ public class PlayerController : MonoBehaviour
     public LayerMask terrainLayer;
     public Rigidbody rb;
     public SpriteRenderer sr;
-
+    public FootstepScript fs;
+    public GameObject footstep;
     public Animator animator;
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
         //animator = gameObject.GetComponent<Animator>();
+        fs = gameObject.GetComponent<FootstepScript>();
+        footstep.SetActive(false);
     }
 
     // Update is called once per frame
@@ -55,5 +58,30 @@ public class PlayerController : MonoBehaviour
         //    sr.flipX = false;
         //}
 
+        if (Input.GetKey("w"))
+        {
+            footsteps();
+        }
+        else if ( Input.GetKey("a"))
+        {
+            footsteps();
+        }
+        else if (Input.GetKey("s"))
+        {
+            footsteps();
+        }
+        else if ( Input.GetKey("d"))
+        {
+            footsteps();
+        }
+        else
+        {
+            footstep.SetActive(false);
+        }
+
+    }
+    public void footsteps()
+    {
+        footstep.SetActive(true);
     }
 }
