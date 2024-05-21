@@ -1,19 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class SoundEffects : MonoBehaviour, IPointerEnterHandler
+public class ButtonClickSoundManager : MonoBehaviour
 {
-    // Reference to the AudioSource component
-    public AudioSource hoverSound;
+    // Reference to the AudioSource component that will play the sound
+    public AudioSource clickSound;
 
-    // Method called when the pointer enters the UI element
-    public void OnPointerEnter(PointerEventData eventData)
+    private void Start()
     {
-        if (hoverSound != null)
+        // Find all Button components in the children of this GameObject
+        Button[] buttons = GetComponentsInChildren<Button>();
+
+        // Loop through each button and add the click sound listener
+        foreach (Button button in buttons)
         {
-            hoverSound.Play();
+            button.onClick.AddListener(() => PlayClickSound());
+        }
+    }
+
+    private void PlayClickSound()
+    {
+        if (clickSound != null && clickSound.clip != null)
+        {
+            clickSound.Play();
+        }
+        else
+        {
+            Debug.LogWarning("Click sound or clip is not assigned.");
         }
     }
 }
+
+
+
+
