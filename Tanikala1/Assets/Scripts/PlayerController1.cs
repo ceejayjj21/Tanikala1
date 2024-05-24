@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerController1 : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class PlayerController1 : MonoBehaviour
     public LayerMask layerMask;
     public Transform groundPoint;
     public bool isGrounded;
-
+    private Vector3 moveDirection;
     public float checkGroundPoint;
 
 
@@ -39,6 +40,19 @@ public class PlayerController1 : MonoBehaviour
         else
         {
             isGrounded = false;
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        // Check if the player collides with objects that have specific tags
+        if (collision.gameObject.CompareTag("Building") || collision.gameObject.CompareTag("Car")
+            || collision.gameObject.CompareTag("Tree"))
+        {
+            // Prevent player from moving through the object by setting the move direction to zero
+            moveDirection = Vector3.zero;
+            // Alternatively, you can apply a force in the opposite direction to simulate a bounce
+            // rb.AddForce(-moveDirection * moveSpeed, ForceMode.Impulse);
         }
     }
 }
