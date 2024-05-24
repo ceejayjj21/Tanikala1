@@ -2711,12 +2711,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2f3ec6c8a5118b4abc23cbac4f574ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 3
   groundDist: 0.64
   terrainLayer:
     serializedVersion: 2
     m_Bits: 64
-  rb: {fileID: 0}
+  rb: {fileID: 583043098}
   footstep: {fileID: 1501846471}
   animator: {fileID: 485121922}
 --- !u!54 &583043098
