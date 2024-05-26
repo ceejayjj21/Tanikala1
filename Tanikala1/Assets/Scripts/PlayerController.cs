@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,18 +13,34 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 lastValidPosition;
 
+    // UI elements for interaction with NPCs
+    public GameObject mainPanel;
+    public GameObject npcPanel;
+    public Button closeButton;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         footstep.SetActive(false);
         lastValidPosition = transform.position;
+
+        // Initialize the UI elements
+        if (mainPanel == null || npcPanel == null || closeButton == null)
+        {
+            Debug.LogError("PlayerController: Panels or buttons are not assigned.");
+            return;
+        }
+
+        closeButton.onClick.AddListener(CloseNPCPanel);
+        npcPanel.SetActive(false);
+        mainPanel.SetActive(true);
     }
 
     void Update()
     {
         RaycastHit hit;
         Vector3 castPos = transform.position + Vector3.up; // Simplified cast position calculation
-        if (Physics.Raycast(castPos, -transform.up, out hit, Mathf.Infinity, terrainLayer))
+        if (Physics.Raycast(castPos, Vector3.down, out hit, Mathf.Infinity, terrainLayer))
         {
             transform.position = new Vector3(transform.position.x, hit.point.y + groundDist, transform.position.z);
         }
@@ -50,9 +67,17 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (IsObstacle(collision.gameObject))
+        Debug.Log("Collision detected with: " + collision.gameObject.name); // Debug log for collision detection
+
+        if (collision.gameObject.CompareTag("NPC"))
         {
-            // Do nothing on collision enter, handle it in FixedUpdate
+            Debug.Log("Collided with NPC");
+            ShowNPCPanel();
+        }
+        else if (IsObstacle(collision.gameObject))
+        {
+            rb.velocity = Vector3.zero;
+            transform.position = lastValidPosition;
         }
     }
 
@@ -60,7 +85,8 @@ public class PlayerController : MonoBehaviour
     {
         if (IsObstacle(collision.gameObject))
         {
-            // Do nothing on collision stay, handle it in FixedUpdate
+            rb.velocity = Vector3.zero;
+            transform.position = lastValidPosition;
         }
     }
 
@@ -101,7 +127,25 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
+
+    // Method to show the NPC interaction panel
+    private void ShowNPCPanel()
+    {
+        npcPanel.SetActive(true);
+        mainPanel.SetActive(false);
+    }
+
+    // Method to close the NPC interaction panel and return to the main panel
+    private void CloseNPCPanel()
+    {
+        npcPanel.SetActive(false);
+        mainPanel.SetActive(true);
+    }
 }
+
+
+
+
 
 
 
