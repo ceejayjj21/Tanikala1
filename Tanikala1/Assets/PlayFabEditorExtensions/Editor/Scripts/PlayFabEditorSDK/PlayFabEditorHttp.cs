@@ -191,10 +191,14 @@ namespace PlayFab.PfEditor
             {
                 yield return www.SendWebRequest();
 
-                if (!string.IsNullOrEmpty(www.error) || www.isHttpError)
+                if (www.result == UnityWebRequest.Result.ProtocolError || www.result == UnityWebRequest.Result.ConnectionError)
+                {
                     errorCallback(www.error);
+                }
                 else
+                {
                     callBack(www.downloadHandler.data);
+                }
             }
             else
             {
@@ -202,6 +206,7 @@ namespace PlayFab.PfEditor
                 errorCallback("UnityWebRequest Object was null");
             }
         }
+
 #else 
         private static IEnumerator Post(WWW www, Action<string> callBack, Action<string> errorCallback)
         {
